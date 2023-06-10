@@ -1,0 +1,13 @@
+/.github/ export-ignore
+/tests/ export-ignore
+/var/ export-ignore
+/docker/ export-ignore
+/docker-compose.yml export-ignore
+/.editorconfig export-ignore
+/.gitattributes export-ignore
+/Makefile export-ignore
+/.gitignore export-ignore
+/.php-cs-fixer.php export-ignore
+/composer.lock export-ignore
+/phpunit.xml export-ignore
+/psalm.xml export-ignore

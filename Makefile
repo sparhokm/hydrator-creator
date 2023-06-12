@@ -32,8 +32,13 @@ php:
 composer:
 	$(cli) composer $(filter-out $@,$(MAKECMDGOALS))
 
+check: fixcs psalm test
+
 fixcs:
 	$(cli) composer fixcs
 
 psalm:
 	$(cli) composer psalm
+
+test:
+	$(cli) composer test

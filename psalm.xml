@@ -42,5 +42,15 @@
                 <directory name="tests"/>
             </errorLevel>
         </UnusedMethodCall>
+        <UnusedConstructor>
+            <errorLevel type="suppress">
+                <directory name="tests"/>
+            </errorLevel>
+        </UnusedConstructor>
+        <PossiblyUnusedMethod>
+            <errorLevel type="suppress">
+                <directory name="tests"/>
+            </errorLevel>
+        </PossiblyUnusedMethod>
     </issueHandlers>
 </psalm>

@@ -25,6 +25,11 @@
       "Sav\\Hydrator\\": "src/"
     }
   },
+  "autoload-dev": {
+      "psr-4": {
+          "Sav\\Hydrator\\": "tests/"
+      }
+  },
   "config": {
     "allow-plugins": {
       "ergebnis/composer-normalize": true
@@ -34,6 +39,6 @@
   "scripts": {
     "fixcs": "PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix -v --diff --allow-risky=yes",
     "psalm": "psalm --show-info=true --no-diff ",
-    "test": "phpunit"
+    "test": "phpunit --testdox"
   }
 }

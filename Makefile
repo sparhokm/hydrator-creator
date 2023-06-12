@@ -42,3 +42,6 @@ psalm:
 
 test:
 	$(cli) composer test
+
+test-coverage:
+	$(cli) composer test-coverage

@@ -27,7 +27,7 @@
   },
   "autoload-dev": {
       "psr-4": {
-          "Sav\\Hydrator\\": "tests/"
+          "Sav\\Hydrator\\Tests\\": "tests/"
       }
   },
   "config": {

@@ -16,7 +16,6 @@ final class ObjectCreator
 
     /**
      * @template T
-     *
      * @param class-string<T> $class
      * @param scalar|array $args
      * @return T

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Sav\Hydrator\ObjectCreator;
+namespace Sav\Hydrator\Tests\ObjectCreator;
 
 use DateTimeImmutable;
 use InvalidArgumentException;

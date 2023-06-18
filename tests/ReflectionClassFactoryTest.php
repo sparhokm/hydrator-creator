@@ -2,6 +2,10 @@
 
 declare(strict_types=1);
 
+namespace Sav\Hydrator\Tests;
+
+use DateTimeImmutable;
+use ReflectionException;
 use Sav\Hydrator\ReflectionClassFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;

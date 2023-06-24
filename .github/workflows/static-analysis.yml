@@ -31,9 +31,7 @@ jobs:
       run: composer install --prefer-dist --no-progress
 
     - name: Static Analysis
-      continue-on-error: true
       run: composer psalm
 
     - name: Type coverage
-      continue-on-error: true
       run: composer psalm -- --shepherd --stats

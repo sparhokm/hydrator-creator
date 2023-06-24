@@ -31,7 +31,7 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - name: tests
-        run: composer phpunit
+        run: composer test
 
       - name: upload coverage to codecov.io
         uses: codecov/codecov-action@v3

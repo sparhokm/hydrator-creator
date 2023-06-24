@@ -30,10 +30,13 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
 
-      - name: tests
+      - name: Tests
         run: composer test
 
-      - name: upload coverage to codecov.io
+      - name: Tests coverage for codecov.io
+        run: composer test-coverage-codeconv
+
+      - name: Upload coverage to codecov.io
         uses: codecov/codecov-action@v3
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

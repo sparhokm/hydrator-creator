@@ -41,6 +41,6 @@
     "psalm": "psalm --show-info=true --no-diff",
     "test": "phpunit --testdox",
     "test-coverage": "XDEBUG_MODE=coverage phpunit --colors=always --coverage-html var/test/coverage",
-    "test-coverage-codeconv": "XDEBUG_MODE=coverage phpunit --coverage-xml var/test/coverage"
+    "test-coverage-codeconv": "XDEBUG_MODE=coverage phpunit --coverage-clover coverage.xml"
   }
 }

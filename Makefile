@@ -40,6 +40,9 @@ fixcs:
 psalm:
 	$(cli) composer psalm
 
+psalm-coverage:
+	$(cli) composer psalm -- --stats
+
 test:
 	$(cli) composer test
 

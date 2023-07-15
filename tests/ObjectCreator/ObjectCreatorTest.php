@@ -43,6 +43,16 @@ final class ObjectCreatorTest extends TestCase
         self::assertSame($object->dateTimeImmutable, $testData['dateTimeImmutable']);
     }
 
+    public function testReturnSameObjectIfArgumentIsObject(): void
+    {
+        $objectCreator = $this->getObjectCreator();
+        $date = new DateTimeImmutable();
+
+        $object = $objectCreator->create(DateTimeImmutable::class, $date);
+
+        self::assertSame($object, $date);
+    }
+
     public function testTryCreateClassWithWrongTypes(): void
     {
         $objectCreator = $this->getObjectCreator();

@@ -7,27 +7,29 @@ namespace Sav\Hydrator\Attribute\ValueExtractor;
 use Attribute;
 use LogicException;
 use Sav\Hydrator\Attribute\ValueExtractor;
+use Sav\Hydrator\ConstructorParameters\DefaultValueExtractor;
 use Sav\Hydrator\ConstructorParameters\Parameter;
 
 #[Attribute(Attribute::TARGET_PARAMETER | Attribute::TARGET_PROPERTY)]
 final class RenameFrom implements ValueExtractor
 {
+    private readonly DefaultValueExtractor $defaultValueExtractor;
+
     public function __construct(private readonly string $oldName)
     {
+        $this->defaultValueExtractor = new DefaultValueExtractor();
     }
 
     /**
      * @throws LogicException
      */
-    public function extractValue(Parameter $parameter, ?array $data, object $context): mixed
+    public function extractValue(Parameter $parameter, array $data, object $context): mixed
     {
-        if (
-            $parameter->isRequiredKeyValue()
-            && ($data === null || !array_key_exists($this->oldName, $data))
-        ) {
-            throw new LogicException('Value not exist.');
+        if ($data && array_key_exists($this->oldName, $data)) {
+            /** @psalm-suppress MixedAssignment */
+            $data[$parameter->getName()] = $data[$this->oldName];
         }
 
-        return $data[$this->oldName] ?? null;
+        return $this->defaultValueExtractor->extractValue($parameter, $data, $context);
     }
 }

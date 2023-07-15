@@ -32,7 +32,7 @@ final class RenameFromTest extends TestCase
 
         $renamed = ConstructorParametersHelper::getParameterByName($parameters, 'renamed');
 
-        self::assertNull($renamed->getValueExtractor()->extractValue($renamed, ['renamed' => 2], $context));
+        self::assertEquals(2, $renamed->getValueExtractor()->extractValue($renamed, ['renamed' => 2], $context));
     }
 
     public function testTryGetRequiredByMissName(): void

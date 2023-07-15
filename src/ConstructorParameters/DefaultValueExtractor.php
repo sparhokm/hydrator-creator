@@ -12,13 +12,17 @@ final class DefaultValueExtractor implements ValueExtractor
     /**
      * @throws LogicException
      */
-    public function extractValue(Parameter $parameter, ?array $data, object $context): mixed
+    public function extractValue(Parameter $parameter, array $data, object $context): mixed
     {
         if (
             $parameter->isRequiredKeyValue()
-            && ($data === null || !array_key_exists($parameter->getName(), $data))
+            && !array_key_exists($parameter->getName(), $data)
         ) {
             throw new LogicException('Value not exist.');
+        }
+
+        if (!array_key_exists($parameter->getName(), $data) && $parameter->isDefaultValueAvailable()) {
+            return $parameter->getDefaultValue();
         }
 
         return $data[$parameter->getName()] ?? null;

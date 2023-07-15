@@ -14,6 +14,9 @@ final class ArrayOfObjects implements ArrayMap
 {
     private readonly ClassType $type;
 
+    /**
+     * @param class-string $class
+     */
     public function __construct(string $class)
     {
         $this->type = new ClassType($class);

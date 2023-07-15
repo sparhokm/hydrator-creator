@@ -8,6 +8,9 @@ use Sav\Hydrator\ConstructorParameters\Type;
 
 final class ClassType implements Type
 {
+    /**
+     * @param class-string $class
+     */
     public function __construct(private readonly string $class)
     {
     }
@@ -17,6 +20,9 @@ final class ClassType implements Type
         return $value;
     }
 
+    /**
+     * @return class-string
+     */
     public function getClass(): string
     {
         return $this->class;

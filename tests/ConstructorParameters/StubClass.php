@@ -6,7 +6,7 @@ namespace Sav\Hydrator\Tests\ConstructorParameters;
 
 use Sav\Hydrator\Attribute\ArrayMap\ArrayOfObjects;
 use Sav\Hydrator\Attribute\RequiredKeyValue;
-use Sav\Hydrator\Attribute\ValueExtractor\RenameFrom;
+use Sav\Hydrator\Attribute\ValueExtractor\Alias;
 use Sav\Hydrator\Attribute\ValueModifier\DefaultValue;
 use Sav\Hydrator\Attribute\ValueValidator\NotEmpty;
 
@@ -19,8 +19,8 @@ final class StubClass
         #[ArrayOfObjects(StubClass::class)]
         public readonly array $arrayOfObjects,
         public ?string $defaultValueExtractor,
-        #[RenameFrom('boolVarOldName')]
-        public string $renameFromValueExtractor,
+        #[Alias('boolVarOldName')]
+        public string $aliasValueExtractor,
         public readonly bool $notRequired,
         #[RequiredKeyValue]
         public array $required,
@@ -31,12 +31,12 @@ final class StubClass
         #[DefaultValue(3)]
         public readonly ?int $default3,
         #[RequiredKeyValue]
-        #[RenameFrom('oldName')]
+        #[Alias('oldName')]
         #[ArrayOfObjects(StubClass::class)]
         #[ValueValidatorStub]
         public readonly ?array $multiplyAttributes,
         #[ArrayOfObjects(StubClass::class)]
-        #[RenameFrom('oldName')]
+        #[Alias('oldName')]
         public readonly ?array $context,
     ) {
     }

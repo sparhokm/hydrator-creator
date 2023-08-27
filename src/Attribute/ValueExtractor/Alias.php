@@ -11,7 +11,7 @@ use Sav\Hydrator\ConstructorParameters\DefaultValueExtractor;
 use Sav\Hydrator\ConstructorParameters\Parameter;
 
 #[Attribute(Attribute::TARGET_PARAMETER | Attribute::TARGET_PROPERTY)]
-final class RenameFrom implements ValueExtractor
+final class Alias implements ValueExtractor
 {
     private readonly DefaultValueExtractor $defaultValueExtractor;
 

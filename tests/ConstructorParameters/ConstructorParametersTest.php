@@ -6,7 +6,7 @@ namespace Sav\Hydrator\Tests\ConstructorParameters;
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Sav\Hydrator\Attribute\ValueExtractor\RenameFrom;
+use Sav\Hydrator\Attribute\ValueExtractor\Alias;
 use Sav\Hydrator\Attribute\ValueModifier\DefaultValue;
 use Sav\Hydrator\Attribute\ValueValidator\NotEmpty;
 use Sav\Hydrator\ConstructorParameters\Parameter;
@@ -27,10 +27,10 @@ final class ConstructorParametersTest extends TestCase
         $parameters = ConstructorParametersHelper::getParameters(StubClass::class);
 
         $defaultValueExtractor = ConstructorParametersHelper::getParameterByName($parameters, 'defaultValueExtractor');
-        $renameFromValueExtractor = ConstructorParametersHelper::getParameterByName($parameters, 'renameFromValueExtractor');
+        $aliasValueExtractor = ConstructorParametersHelper::getParameterByName($parameters, 'aliasValueExtractor');
 
         self::assertInstanceOf(DefaultValueExtractor::class, $defaultValueExtractor->getValueExtractor());
-        self::assertInstanceOf(RenameFrom::class, $renameFromValueExtractor->getValueExtractor());
+        self::assertInstanceOf(Alias::class, $aliasValueExtractor->getValueExtractor());
     }
 
     public function testRequiredKeyValue(): void
@@ -104,7 +104,7 @@ final class ConstructorParametersTest extends TestCase
         self::assertCount(1, $multiplyAttributes->getValueModifiers());
         self::assertCount(2, $multiplyAttributes->getValueValidators());
         self::assertTrue($multiplyAttributes->isRequiredKeyValue());
-        self::assertInstanceOf(RenameFrom::class, $multiplyAttributes->getValueExtractor());
+        self::assertInstanceOf(Alias::class, $multiplyAttributes->getValueExtractor());
     }
 
     public function testThrowOnUnionTypeAttribute(): void

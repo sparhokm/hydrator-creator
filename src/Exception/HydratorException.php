@@ -31,16 +31,18 @@ final class HydratorException extends \Exception
 
     private function getErrorMessage(): string
     {
+        $previousFieldName = '';
         $previous = $this->getPreviousThrowable();
         if (!is_array($previous)) {
             if (!is_a($previous, self::class)) {
                 return $previous->getMessage();
             }
 
+            $previousFieldName = $previous->arrayKey ?? '';
             $previous = [$previous];
         }
 
-        return implode(PHP_EOL, $this->generateMessage($previous));
+        return implode(PHP_EOL, $this->generateMessage($previous, $previousFieldName));
     }
 
     /**
@@ -60,8 +62,8 @@ final class HydratorException extends \Exception
 
             if (is_array($previous)) {
                 $fieldName = $previousFieldName;
-                if ($exception->getArrayKey() !== null) {
-                    $fieldName .= $exception->getArrayKey() . '->';
+                if (!empty($previousFieldName)) {
+                    $fieldName .= '->' . ($this->arrayKey ?? '');
                 }
                 $messages[] = implode(PHP_EOL, $this->generateMessage($previous, $fieldName));
                 continue;

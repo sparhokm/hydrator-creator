@@ -8,6 +8,7 @@ use LogicException;
 use ReflectionException;
 use Sav\Hydrator\ConstructorParameters\ConstructorParameters;
 use Sav\Hydrator\ConstructorParameters\Type;
+use Sav\Hydrator\ConstructorParameters\TypeFactory;
 use Sav\Hydrator\Exception\HydratorException;
 use Throwable;
 
@@ -56,11 +57,6 @@ final class Hydrator
                         $parameter->getType(),
                         $value,
                         $context
-                    );
-                } catch (HydratorException $exception) {
-                    throw new HydratorException(
-                        previous: $exception,
-                        arrayKey: $parameter->getName(),
                     );
                 } catch (Throwable $throwable) {
                     throw new HydratorException(

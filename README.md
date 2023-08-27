@@ -301,10 +301,10 @@ balance: Value is empty.
 
 To expand the functionality, you can write your own attributes that implement special interfaces depending on their purpose. 
 
-- *`Sav\Hydrator\Attribute\ValueExtractor`* is used to change the search for a parameter value among input data. An example of such an attribute is Alias. 
+- `Sav\Hydrator\Attribute\ValueExtractor` is used to change the search for a parameter value among input data. An example of such an attribute is Alias. 
 
-- *`\Sav\Hydrator\Attribute\ValueModifier`* is needed to transform the found value. An example could be the DefaultValue attribute. 
+- `\Sav\Hydrator\Attribute\ValueModifier` is needed to transform the found value. An example could be the DefaultValue attribute. 
 
-- *`\Sav\Hydrator\Attribute\ValueValidator`* is used to check extracted and modified data. An example is the NotEmpty attribute that validates empty values.
+- `\Sav\Hydrator\Attribute\ValueValidator` is used to check extracted and modified data. An example is the NotEmpty attribute that validates empty values.
 
-- *`\Sav\Hydrator\Attribute\ArrayMap`* is used to define the type of interpretation for values with a specific key. An example is the ArrayOfObjects attribute, which interprets each element of the array as a value of a specified class.
+- `\Sav\Hydrator\Attribute\ArrayMap` is used to define the type of interpretation for values with a specific key. An example is the ArrayOfObjects attribute, which interprets each element of the array as a value of a specified class.

@@ -7,13 +7,9 @@ namespace Sav\Hydrator\Tests\Hydrator;
 use DateTimeImmutable;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Sav\Hydrator\ConstructorParameters\ConstructorParameters;
-use Sav\Hydrator\ConstructorParameters\TypeFactory;
 use Sav\Hydrator\DataCaster;
 use Sav\Hydrator\Exception\HydratorException;
 use Sav\Hydrator\Hydrator;
-use Sav\Hydrator\ObjectCreator;
-use Sav\Hydrator\ReflectionClassFactory;
 
 #[CoversClass(Hydrator::class)]
 #[CoversClass(DataCaster::class)]
@@ -21,11 +17,7 @@ final class HydratorTest extends TestCase
 {
     public function testSuccessCreateSimpleClass(): void
     {
-        $hydrator = new Hydrator(
-            new ConstructorParameters(new ReflectionClassFactory(), new TypeFactory()),
-            new DataCaster(),
-            new ObjectCreator(new ReflectionClassFactory())
-        );
+        $hydrator = Hydrator::init();
         $testData = [
             'float' => 3.0,
             'string' => 'text',
@@ -71,11 +63,7 @@ final class HydratorTest extends TestCase
     {
         $this->expectException(HydratorException::class);
 
-        $hydrator = new Hydrator(
-            new ConstructorParameters(new ReflectionClassFactory(), new TypeFactory()),
-            new DataCaster(),
-            new ObjectCreator(new ReflectionClassFactory())
-        );
+        $hydrator = Hydrator::init();
         $testData = [
             'a' => null,
             'stubSubClass' => [

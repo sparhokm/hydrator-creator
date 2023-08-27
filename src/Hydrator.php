@@ -24,6 +24,15 @@ final class Hydrator
     ) {
     }
 
+    public static function init(): self
+    {
+        return new self(
+            new ConstructorParameters(new ReflectionClassFactory(), new TypeFactory()),
+            new DataCaster(),
+            new ObjectCreator(new ReflectionClassFactory())
+        );
+    }
+
     /**
      * @template T
      * @param class-string<T> $class

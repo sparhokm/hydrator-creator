@@ -1,6 +1,6 @@
 {
   "name": "sav/hydrator-creator",
-  "description": "Creates an object and hydrates it with data",
+  "description": "Hydrating objects through the class constructor",
   "license": "MIT",
   "type": "library",
   "authors": [
